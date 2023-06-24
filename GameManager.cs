@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private int score;
     public GameState currentState;
-    private HexGenerate hexGenerate;    
+    public HexGrid hexGrid;
+       
     void Start()
     {
         currentState = GameState.MainMenu;
@@ -36,8 +37,7 @@ public class GameManager : MonoBehaviour
                            
                 break;
             case GameState.Playing:
-                hexGenerate = FindObjectOfType<HexGenerate>();
-                hexGenerate.GenerateMap();
+
                 break;
             case GameState.GameOver:
                 
@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public void StartGame() 
     {
         currentState = GameState.Playing;
+        hexGrid = FindObjectOfType<HexGrid>();
+        hexGrid.StartMap();
     }
     public void MainMenuGame() 
     {

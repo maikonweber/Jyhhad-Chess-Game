@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{
+{   
+
     // Start is called before the first frame update
     private int score;
     public GameState currentState;
-    
+    private HexGenerate hexGenerate;    
     void Start()
     {
         currentState = GameState.MainMenu;
@@ -35,7 +36,8 @@ public class GameManager : MonoBehaviour
                            
                 break;
             case GameState.Playing:
-                
+                hexGenerate = FindObjectOfType<HexGenerate>();
+                hexGenerate.GenerateMap();
                 break;
             case GameState.GameOver:
                 
